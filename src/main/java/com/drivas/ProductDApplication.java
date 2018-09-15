@@ -20,8 +20,8 @@ public class ProductDApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		User user = new User();
-		repo.save(user);
+		//User user = new User();
+		//repo.save(user);
 		
 	}
 }
