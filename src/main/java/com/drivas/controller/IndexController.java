@@ -2,6 +2,7 @@ package com.drivas.controller;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -10,9 +11,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.drivas.commands.UserCommand;
 import com.drivas.domain.User;
+import com.drivas.services.UserService;
 
 @Controller
 public class IndexController {
+	
+	@Autowired
+	UserService userService;
 	
 	@RequestMapping("/")
 	public String welcome(Model model) {
@@ -29,6 +34,7 @@ public class IndexController {
 			
 			return "redirect:/";
 		}
+		userService.login(userCommand.getUserEmail());
 		
 		return "redirect:/products";
 		

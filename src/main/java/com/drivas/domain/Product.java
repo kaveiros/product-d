@@ -2,9 +2,13 @@ package com.drivas.domain;
 
 import java.math.BigDecimal;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
+
+@Document(collection = "products")
 public class Product {
 	
-	private Integer id;
+	private Integer idProduct;
 	
 	private String description;
 	
@@ -13,11 +17,11 @@ public class Product {
 	private String URL;
 
 	public Integer getId() {
-		return id;
+		return idProduct;
 	}
 
 	public void setId(Integer id) {
-		this.id = id;
+		this.idProduct = id;
 	}
 
 	public String getDescription() {

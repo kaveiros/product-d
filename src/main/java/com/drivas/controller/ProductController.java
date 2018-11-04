@@ -59,4 +59,12 @@ public class ProductController {
 		productService.deleteProduct(id);
 		return "redirect:/products";
 	}
+	
+	@RequestMapping("/product/modal/{id}")
+	public String modalProduct(@PathVariable Integer id) {
+		
+		//productService.deleteProduct(id);
+		return "modal";
+		//return "redirect:/products";
+	}
 }

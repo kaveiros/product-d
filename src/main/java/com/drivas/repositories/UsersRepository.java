@@ -1,11 +1,10 @@
 package com.drivas.repositories;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.jdbc.core.JdbcTemplate;
+//+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.drivas.domain.User;
@@ -13,14 +12,14 @@ import com.drivas.domain.User;
 @Repository
 public class UsersRepository implements PagingAndSortingRepository<User, Integer>{
 	
-	@Autowired
-	JdbcTemplate jdbc;
+	//@Autowired
+	//JdbcTemplate jdbc;
 
 	@Override
 	public User save(User user) {
 		
 		String insertSQL = "INSERT INTO USERS (userEmail, userPassword)VALUES ('nxnt2z@yahoo.gr','1f#b@r')";
-		jdbc.execute(insertSQL);
+		//jdbc.execute(insertSQL);
 
 		return null;
 	}

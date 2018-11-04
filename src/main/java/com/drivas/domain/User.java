@@ -1,5 +1,8 @@
 package com.drivas.domain;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "users")
 public class User {
 	
 	private int userID;
