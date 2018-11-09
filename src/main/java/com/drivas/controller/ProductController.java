@@ -26,7 +26,7 @@ public class ProductController {
 	}
 	
 	@RequestMapping("/product/{id}")
-	public String getProdut(@PathVariable Integer id, Model model) {
+	public String getProdut(@PathVariable String id, Model model) {
 		
 		model.addAttribute("product", productService.getProductById(id));
 		
@@ -34,7 +34,7 @@ public class ProductController {
 	}
 	
 	@RequestMapping("/product/edit/{id}")
-	public String editProduct(@PathVariable Integer id, Model model) {
+	public String editProduct(@PathVariable String id, Model model) {
 		
 		model.addAttribute("product", productService.getProductById(id));
 		return "productform";
@@ -54,14 +54,14 @@ public class ProductController {
 	}
 	
 	@RequestMapping("/product/delete/{id}")
-	public String deleteProduct(@PathVariable Integer id) {
+	public String deleteProduct(@PathVariable String id) {
 		
 		productService.deleteProduct(id);
 		return "redirect:/products";
 	}
 	
 	@RequestMapping("/product/modal/{id}")
-	public String modalProduct(@PathVariable Integer id) {
+	public String modalProduct(@PathVariable String id) {
 		
 		//productService.deleteProduct(id);
 		return "modal";

@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+
+<script
+	src="http://cdn.jsdelivr.net/webjars/jquery/3.3.1-1/jquery.min.js"
+	th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+
 <link
 	href="http://cdn.jsdelivr.net/webjars/bootstrap/4.1.1/css/bootstrap.min.css"
 	th:href="@{/webjars/bootstrap/4.1.1/css/bootstrap.min.css}"
 	rel="stylesheet" media="screen" />
 
-<script
-	src="http://cdn.jsdelivr.net/webjars/jquery/3.3.1-1/jquery.min.js"
-	th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
 
 <link href="../static/css/spring-core.css"
 	th:href="@{css/spring-core.css}" rel="stylesheet" media="screen" />
@@ -17,36 +19,65 @@
 </head>
 <body>
 	<div class="container">
-    <div th:if="${not #lists.isEmpty(products)}">
-        <h2>Product List</h2>
-        <table class="table table-striped">
-            <tr>
-                <th>Id</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Image URL</th>
-                <th>List</th>
-                <th>Edit</th>
-                <th>Delete</th>
-                <th>Delete</th>
-            </tr>
-            <tr th:each="product : ${products}">
-                <td th:text="${product.id}"></td>
-                <td th:text="${product.description}"></td>
-                <td th:text="${product.price}"></td>
-                <td th:text="${product.URL}"></td>
-                <td><a class="btn btn-primary" th:href="${'/product/' + product.id}">View</a></td>
-                <td><a class="btn btn-info" th:href="${'/product/edit/' + product.id}">Edit</a></td>
-                <td><a class="btn btn-danger" th:href="${'/product/delete/' + product.id}">Delete</a></td>
-                <td><a class="btn btn-danger" th:href="${'/product/modal/' + product.id}">Delete</a></td>
-            </tr>
-        </table>
-    </div>
-    <div class="row">
-    	<div class="col-sm-3">
-    		<a th:href="${'/product/new'}">New Product</a>
-    	</div>
-    </div>
-</div>
+		<div th:if="${not #lists.isEmpty(products)}">
+			<h2>Product List</h2>
+			<table class="table table-striped">
+				<tr>
+					<th>Id</th>
+					<th>Description</th>
+					<th>Price</th>
+					<th>Image URL</th>
+					<th>List</th>
+					<th>Edit</th>
+					<!-- <th>Delete</th> -->
+					<th>Delete</th>
+				</tr>
+				<tr th:each="product : ${products}">
+					<td th:text="${product.id}"></td>
+					<td th:text="${product.description}"></td>
+					<td th:text="${product.price}"></td>
+					<td><img alt="img" th:src="${product.URL}" /></td>
+					<td><a class="btn btn-primary"
+						th:href="${'/product/' + product.id}">View</a></td>
+					<td><a class="btn btn-info"
+						th:href="${'/product/edit/' + product.id}">Edit</a></td>
+					<!-- <td><a class="btn btn-danger"
+						th:href="${'/product/delete/' + product.id}">Delete</a></td> -->
+					<td><a class="btn btn-danger" th:href="'#modal-warning' + ${product.id}" data-toggle="modal">Delete</a>
+					<!-- Delete modal -->
+	<div class="modal modal-warning fade in" th:id="modal-warning + ${product.id}">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<h5 class="modal-title">Delete User</h5>
+				</div>
+				<div class="modal-body">
+					<h3>Are you sure want to delete this user?</h3>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-outline pull-left"
+						data-dismiss="modal">Close</button>
+					<a type="button" class="btn btn-danger" th:href="${'/product/modal/' + product.id}"><i class="fa fa-check"></i>&nbsp;Yes</a>
+				</div>
+			</div>
+		</div>
+	</div>
+					</td>					
+				</tr>
+			</table>
+		</div>
+		<div class="row">
+			<div class="col-sm-3">
+				<a th:href="${'/product/new'}">New Product</a>
+			</div>
+		</div>
+	</div>
+
+	
+
 </body>
 </html>

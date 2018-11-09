@@ -7,12 +7,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.drivas.domain.Product;
+import com.drivas.domain.ProductRepository;
 
 @Service
 public class ProductServiceImpl implements ProductService {
+	
+	
+	@Autowired
+	ProductRepository prodRepo;
 	
 	private Map<Integer,Product> products;
 	
@@ -23,14 +29,15 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<Product> listAllProducts() {
 		
-		return new ArrayList<>(products.values());
+		//return new ArrayList<>(products.values());
+		return prodRepo.findAll();
 	}
 	
 	 private void loadProducts(){
 	        products = new HashMap<>();
 
 	        Product product1 = new Product();
-	        product1.setId(1);
+	        //product1.setId(1);
 	        product1.setDescription("Product 1");
 	        product1.setPrice(new BigDecimal("12.99"));
 	        product1.setURL("http://example.com/product1");
@@ -38,7 +45,7 @@ public class ProductServiceImpl implements ProductService {
 	        products.put(1, product1);
 
 	        Product product2 = new Product();
-	        product2.setId(2);
+	        //product2.setId(2);
 	        product2.setDescription("Product 2");
 	        product2.setPrice(new BigDecimal("14.99"));
 	        product2.setURL("http://example.com/product2");
@@ -46,7 +53,7 @@ public class ProductServiceImpl implements ProductService {
 	        products.put(2, product2);
 
 	        Product product3 = new Product();
-	        product3.setId(3);
+	        //product3.setId(3);
 	        product3.setDescription("Product 3");
 	        product3.setPrice(new BigDecimal("34.99"));
 	        product3.setURL("http://example.com/product3");
@@ -54,7 +61,7 @@ public class ProductServiceImpl implements ProductService {
 	        products.put(3, product3);
 
 	        Product product4 = new Product();
-	        product4.setId(4);
+	        //product4.setId(4);
 	        product4.setDescription("Product 4");
 	        product4.setPrice(new BigDecimal("44.99"));
 	        product4.setURL("http://example.com/product4");
@@ -62,7 +69,7 @@ public class ProductServiceImpl implements ProductService {
 	        products.put(4, product4);
 
 	        Product product5 = new Product();
-	        product5.setId(5);
+	        //product5.setId(5);
 	        product5.setDescription("Product 2");
 	        product5.setPrice(new BigDecimal("25.99"));
 	        product5.setURL("http://example.com/product5");
@@ -71,8 +78,8 @@ public class ProductServiceImpl implements ProductService {
 	    }
 
 	@Override
-	public Product getProductById(Integer id) {
-		return products.get(id);
+	public Product getProductById(String id) {
+		return prodRepo.findOne(id);
 	}
 
 	@Override
@@ -81,10 +88,10 @@ public class ProductServiceImpl implements ProductService {
 		if (product != null) { 
 			
 			if (product.getId() == null) {
-				product.setId(getNextKey());
+				//product.setId(getNextKey());
 			}
 			
-			products.put(product.getId(), product);
+			//products.put(product.getId(), product);
 			return product;
 		}
 		else {
@@ -99,7 +106,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public void deleteProduct(Integer id) {
+	public void deleteProduct(String id) {
 		products.remove(id);
 		
 	}

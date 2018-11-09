@@ -1,11 +1,13 @@
 package com.drivas.domain;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "users")
 public class User {
 	
-	private int userID;
+	@Id
+	private String userID;
 	
 	private String email;
 	
@@ -27,13 +29,14 @@ public class User {
 		this.passwordLogin = passwordLogin;
 	}
 
-	public int getUserID() {
+	public String getUserID() {
 		return userID;
 	}
 
-	public void setUserID(int userID) {
+	public void setUserID(String userID) {
 		this.userID = userID;
 	}
+	
 	
 	
 
