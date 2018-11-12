@@ -55,8 +55,9 @@
 						th:href="${'/product/delete/' + product.id}">Delete</a></td> -->
 					<!-- <td><a class="btn btn-danger" th:href="'#modal-warning' + ${product.id}" data-toggle="modal">Delete</a> -->
 					<td>
-					<a class="btn btn-danger foo" th:href="'#modal-warning' + ${product.id}"  data-target="'#modal-warning' + ${product.id}"  data-toggle="modal">Delete</a>
-					
+					<a class="btn btn-danger del">Delete</a>
+					<!-- <a id="dd" class="btn btn-danger foo" th:href="'#modal-warning' + ${product.id}"  data-target="'#modal-warning' + ${product.id}"  data-toggle="modal">Delete</a> -->
+<!-- 				
  					Delete modal
 	<div class="modal modal-warning fade in" th:id="modal-warning + ${product.id}">
 		<div class="modal-dialog">
@@ -79,7 +80,7 @@
 			</div>
 		</div>
 	</div>
-					</td>					
+				 --> 	</td>					
 				</tr>
 			</table>
 		</div>
@@ -113,13 +114,12 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
+
+	$('.table .del').on('click', function(event){
+		
 		$('#exampleModal').modal('show') ;
-	//alert();
-	$('a.foo').on('click', function(){
-		alert();
 		
-		
-	}, false);
+	});
 	
 });
 
