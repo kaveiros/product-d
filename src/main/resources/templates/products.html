@@ -49,7 +49,7 @@
 					<td><img alt="img" th:src="${product.URL}" /></td>
 					<td><a class="btn btn-primary"
 						th:href="${'/product/' + product.id}">View</a></td>
-					<td><a class="btn btn-info"
+					<td><a class="btn btn-info edi"
 						th:href="${'/product/edit/' + product.id}">Edit</a></td>
 					<!-- <td><a class="btn btn-danger"
 						th:href="${'/product/delete/' + product.id}">Delete</a></td> -->
@@ -115,6 +115,13 @@
 <script type="text/javascript">
 $(document).ready(function(){
 
+	$('.table .edi').on('click', function(event){
+		
+		event.preventDefault();
+		alert();
+		
+	});
+	
 	$('.table .del').on('click', function(event){
 		
 		$('#exampleModal').modal('show') ;

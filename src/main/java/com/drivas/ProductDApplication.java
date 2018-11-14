@@ -10,8 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.drivas.domain.Product;
-import com.drivas.domain.ProductRepository;
 import com.drivas.domain.User;
+import com.drivas.repositories.ProductRepository;
 import com.drivas.repositories.UserRepository;
 import com.mongodb.BasicDBObject;
 
